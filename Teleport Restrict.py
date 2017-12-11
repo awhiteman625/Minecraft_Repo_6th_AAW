@@ -8,7 +8,7 @@ if not -127 < x < 127:
     v = False
 if not -63 < y <63:
     v = False
-if not -127 < y < 127:
+if not -127 < z < 127:
     v = False
 if v:
     mc.player.setPos(x, y, z)

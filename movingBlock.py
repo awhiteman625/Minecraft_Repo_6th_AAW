@@ -3,7 +3,8 @@ mc = Minecraft.create()
 import time
 
 def calculateMove():
-    #Global variables inserted here
+    global x
+    global z
     currentHeight = mc.getHeight(x, z) - 1
     forwardHeight = mc.getHeight(x + 1, z)
     rightHeight = mc.getHeight(x, z + 1)
@@ -20,5 +21,11 @@ def calculateMove():
         x -= 1
 
     y = mc.getHeight()
-x, z = mc.getHeight(x, z)
+x, z = mc.player.getTilePos(x, z)
 y = mc.getHeight(x, z)
+
+while True:
+    calculateMove()
+    mc.setBlock(x, y, z, 103)
+    time.sleep(0.3)
+    mc.setBlock(x, y, z, 0)

@@ -2,6 +2,7 @@ from mcpi.minecraft import Minecraft
 mc = Minecraft.create()
 height = 10
 levels = range(height)
+levels = reversed(levels)
 x, y, z = mc.player.getTilePos()
 y += height
 

@@ -3,7 +3,7 @@ mc = Minecraft.create()
 
 depth = 0
 x, y, z = mc.player.getTilePos()
-for x in range(1, 51):
+for error in range(1, 51):
     depth += 1
     block = mc.getBlock(x, y, z)
     if block == 56:

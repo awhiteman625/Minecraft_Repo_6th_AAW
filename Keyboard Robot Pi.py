@@ -19,7 +19,7 @@ GPIO.setup(10, GPIO.OUT)
 
 #sets two variables name frequency and dutycycle, to better control robot speed
 frequency = 20
-dutyCycle = 30
+dutyCycle = 50
 
 #sets 4 variables to control each motor going forward and back with
 #a specific frequency
@@ -29,44 +29,47 @@ MBf = GPIO.PWM(10, frequency)
 MBb = GPIO.PWM(9, frequency)
 
 #starts software with duty cylce of 0
-MAf
+MAf.start(0)
+MAb.start(0)
+MBf.start(0)
+MBb.start(0)
 
 #function to stop motors
 def stop():
-    GPIO.output(7, 0)
-    GPIO.output(8, 0)
-    GPIO.output(9, 0)
-    GPIO.output(10, 0)
+    MAf.ChangeDutyCycle(0)
+    MAb.ChangeDutyCycle(0)
+    MBf.ChangeDutyCycle(0)
+    MBb.ChangeDutyCycle(0)
 
 #function to push both motors forward
 def forward():
-    GPIO.output(7, 0)
-    GPIO.output(8, 1)
-    GPIO.output(9, 0)
-    GPIO.output(10, 1)
+    MAf.ChangeDutyCycle(dutyCycle)
+    MAb.ChangeDutyCycle(0)
+    MBf.ChangeDutyCycle(dutyCycle)
+    MBb.ChangeDutyCycle(0)
 
 #function to push both motors backwards
 def back():
-    GPIO.output(7, 1)
-    GPIO.output(8, 0)
-    GPIO.output(9, 1)
-    GPIO.output(10, 0)
+    MAf.ChangeDutyCycle(0)
+    MAb.ChangeDutyCycle(dutyCycle)
+    MBf.ChangeDutyCycle(0)
+    MBb.ChangeDutyCycle(dutyCycle)
     
 #function to push one motor forward and one backward
 #causing it to turn left
 def left():
-    GPIO.output(7, 1)
-    GPIO.output(8, 0)
-    GPIO.output(9, 0)
-    GPIO.output(10, 1)
+    MAf.ChangeDutyCycle(0)
+    MAb.ChangeDutyCycle(dutyCycle)
+    MBf.ChangeDutyCycle(dutyCycle)
+    MBb.ChangeDutyCycle(0)
 
 #function to push one motor forward and on backward
     #causing it to turn right
 def right():
-    GPIO.output(7, 0)
-    GPIO.output(8, 1)
-    GPIO.output(9, 1)
-    GPIO.output(10, 0)
+    MAf.ChangeDutyCycle(dutyCycle)
+    MAb.ChangeDutyCycle(0)
+    MBf.ChangeDutyCycle(0)
+    MBb.ChangeDutyCycle(dutyCycle)
 
 #a try-finally loop that will try the top portion, untl is is not true
     #and then continue on the the bottom portion
@@ -80,19 +83,15 @@ try:
         elif char == curses.KEY_UP:
             forward()
             time.sleep(0.1)
-            stop()
         elif char == curses.KEY_DOWN:
             back()
             time.sleep(0.1)
-            stop()
         elif char == curses.KEY_LEFT:
             left()
             time.sleep(0.1)
-            stop()
         elif char == curses.KEY_RIGHT:
             right()
             time.sleep(0.1)
-            stop()
         elif char == 10:
             stop()
 finally:

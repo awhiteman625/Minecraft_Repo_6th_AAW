@@ -94,6 +94,7 @@ try:
             time.sleep(0.1)
         elif char == 10:
             stop()
+            
 finally:
     #this portion of the try-finally loop will cleanup the
     #GPIO pins and set curses back to normal

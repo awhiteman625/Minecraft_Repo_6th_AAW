@@ -17,9 +17,10 @@ GPIO.setup(8, GPIO.OUT)
 GPIO.setup(9, GPIO.OUT)
 GPIO.setup(10, GPIO.OUT)
 
-#sets two variables name frequency and dutycycle, to better control robot speed
+#sets three variables name frequency and dutycycle, to better control robot speed
 frequency = 20
-dutyCycle = 50
+dutyCycleA = 50
+dutyCycleB = 40
 
 #sets 4 variables to control each motor going forward and back with
 #a specific frequency
@@ -43,33 +44,33 @@ def stop():
 
 #function to push both motors forward
 def forward():
-    MAf.ChangeDutyCycle(dutyCycle)
+    MAf.ChangeDutyCycle(dutyCycleA)
     MAb.ChangeDutyCycle(0)
-    MBf.ChangeDutyCycle(dutyCycle)
+    MBf.ChangeDutyCycle(dutyCycleB)
     MBb.ChangeDutyCycle(0)
 
 #function to push both motors backwards
 def back():
     MAf.ChangeDutyCycle(0)
-    MAb.ChangeDutyCycle(dutyCycle)
+    MAb.ChangeDutyCycle(dutyCycleA)
     MBf.ChangeDutyCycle(0)
-    MBb.ChangeDutyCycle(dutyCycle)
+    MBb.ChangeDutyCycle(dutyCycleB)
     
 #function to push one motor forward and one backward
 #causing it to turn left
 def left():
     MAf.ChangeDutyCycle(0)
-    MAb.ChangeDutyCycle(dutyCycle)
-    MBf.ChangeDutyCycle(dutyCycle)
+    MAb.ChangeDutyCycle(dutyCycleA)
+    MBf.ChangeDutyCycle(dutyCycleB)
     MBb.ChangeDutyCycle(0)
 
 #function to push one motor forward and on backward
     #causing it to turn right
 def right():
-    MAf.ChangeDutyCycle(dutyCycle)
+    MAf.ChangeDutyCycle(dutyCycleA)
     MAb.ChangeDutyCycle(0)
     MBf.ChangeDutyCycle(0)
-    MBb.ChangeDutyCycle(dutyCycle)
+    MBb.ChangeDutyCycle(dutyCycleB)
 
 #a try-finally loop that will try the top portion, untl is is not true
     #and then continue on the the bottom portion

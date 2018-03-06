@@ -20,7 +20,7 @@ GPIO.setup(10, GPIO.OUT)
 #sets three variables name frequency and dutycycle, to better control robot speed
 frequency = 20
 dutyCycleA = 50
-dutyCycleB = 40
+dutyCycleB = 37
 
 #sets 4 variables to control each motor going forward and back with
 #a specific frequency

@@ -9,7 +9,7 @@ pE = 18
 HowNear = 15.0
 frequency = 20
 dutyCycleA = 50
-dutyCycleB = 40
+dutyCycleB = 37
 
 GPIO.setup(pT, GPIO.OUT)
 GPIO.setup(pE, GPIO.IN)

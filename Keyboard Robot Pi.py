@@ -1,3 +1,9 @@
+"""this program uses the GPIO pins to run the motors of the robot pi, and the
+curses library to register keystrokes. Based on the direction of the arrows, the
+robot will move in that direction. if you press enter, or OK on the wireless
+keyboard, it will stop the motors. if press 'Q', it will shutdown the program
+"""
+
 #import all libraries needed
 import RPi.GPIO as GPIO
 import time
